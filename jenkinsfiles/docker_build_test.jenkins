@@ -17,7 +17,7 @@ pipeline {
                 echo " ============== docker login =================="
                 withCredentials([usernamePassword(credentialsId: 'dockerhub_maxkushnir', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     sh """
-                    docker login -u $USERNAME -p $PASSWORD
+                    sudo docker login -u $USERNAME -p $PASSWORD
                     """
                 }
             }
@@ -34,7 +34,7 @@ pipeline {
             steps {
                 echo " ============== start pushing image =================="
                 sh '''
-                docker push maxkushnir/toolbox:latest
+                sudo docker push maxkushnir/toolbox:latest
                 '''
             }
         }
